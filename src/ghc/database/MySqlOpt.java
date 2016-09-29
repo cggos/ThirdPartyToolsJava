@@ -62,6 +62,28 @@ public class MySqlOpt {
 			e.printStackTrace();
 		}
 	}
+	
+	public void updateDB(){
+		String usernick = "dog";
+		float sizeSNOOPY = 33.0f;
+		float sizeANTA = 35.0f;
+		String sql = "UPDATE user_footdata SET "+
+				"BrandSizeRealSNOOPY="+sizeSNOOPY+
+				",BrandSizeRealANTA="+sizeANTA+
+				" WHERE DATE(CreateTime)='2016-09-27' AND UserNick='"+usernick+"'";
+
+		int nSuccessDB = 0;
+		int ret = 0;
+		try {
+			ret = statement.executeUpdate(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}					
+		if (ret!=0) {
+			nSuccessDB++;
+		}
+	}
 
 	public void createTable(){
 		String sql = "create table student1(NO char(20),name varchar(20),primary key(NO))";
