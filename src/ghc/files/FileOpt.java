@@ -4,6 +4,8 @@ import java.awt.Component;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
@@ -17,6 +19,20 @@ public class FileOpt {
 		// TODO Auto-generated constructor stub
 	}
 	
+	 /**
+     * 追加方式写文件：使用FileWriter
+     */
+    public static void writeAppend(String fileName, String content) {
+        try {
+            //打开一个写文件器，构造函数中的第二个参数true表示以追加形式写文件
+            FileWriter writer = new FileWriter(fileName, true);
+            writer.write(content);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
 	public static void downloadFile(String urlIn,String fileNameOut){
 		try{            
             URL url = new URL(urlIn);
